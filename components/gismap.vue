@@ -1,10 +1,9 @@
 <template>
-    <div ref="map" style="width:500px;height:500px;">
-
+    <div ref="map">
+        <slot></slot>
     </div>
 </template>
 <script>
-
 export default {
     name: 'gisMap',
     props: ['center','level','cross','overview'],
@@ -25,7 +24,12 @@ export default {
         };
     },
     methods: {
-       
+       line(line,color){
+           this.map.line({path: line, color: color})
+       },
+       mark(lon,lat,img,type){
+           this.map.mark(lon,lat,img,type)
+       }
     },
     components: {
         //custom: customComponents

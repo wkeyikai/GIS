@@ -934,23 +934,42 @@ GIS.map = function (mapID, draggable_options, tile_options) {
         //if (!lon || !lat ) return;
         var markSelf = this;
         var XY = self.getXY(lon, lat);
-        var img_tilep = XY.Y;
+        var img_top = XY.Y;
         var img_left = XY.X;
-
-        var img = doc.createElement('img'); //var img = new Image();
-        img.src = imgSrc;
-        img.style.position = 'absolute';
-        img.style.border = '0px';
-        img.style.padding = '0px';
-        img.style.margin = '0px';
-        img.setAttribute('type', type);
-        img.style.top = img_tilep - img.height + 'px';
-        img.style.left = img_left - img.width / 2 + 'px';
-        //使chrome 吃到img width/height
-        img.onload = function () {
-            img.style.top = img_tilep - img.height + 'px';
+        var img;
+        
+        if(imgSrc){
+            img = doc.createElement('img'); //var img = new Image();
+            img.src = imgSrc;
+            img.style.position = 'absolute';
+            img.style.border = '0px';
+            img.style.padding = '0px';
+            img.style.margin = '0px';
+            img.setAttribute('type', type);
+            img.style.top = img_top - img.height + 'px';
             img.style.left = img_left - img.width / 2 + 'px';
-        };
+            //使chrome 吃到img width/height
+            img.onload = function () {
+                img.style.top = img_top - img.height + 'px';
+                img.style.left = img_left - img.width / 2 + 'px';
+            };
+        }else{
+            img = doc.createElement('div');
+            img.style.width = '25px';
+            img.style.height = '25px';
+            img.style.backgroundColor = '#0000FF';
+            img.style.borderRadius = '25px';
+            img.style.position = 'absolute';
+            img.style.border = '0px';
+            img.style.padding = '0px';
+            img.style.margin = '0px';
+            img.setAttribute('type', type);
+            
+            //console.log('>>',img_top+dragOffset.PY,img_left+dragOffset.PX)
+            img.style.top = img_top+dragOffset.PY - 30 + 'px';
+            img.style.left = img_left+dragOffset.PX - 30 / 2 + 'px';
+        }
+       
         img.onmouseover = function () { dragStatus = ''; this.style.cursor = "pointer"; } //new
         img.onmousedown = function (e) { dragStatus = ''; }
         img.onmouseout = function () { dragStatus = 'global'; this.style.cursor = "pointer"; } //new
@@ -1031,8 +1050,8 @@ GIS.map = function (mapID, draggable_options, tile_options) {
             marks[i].style.left = (parseFloat(marks[i].style.left, 10) + marks[i].offsetWidth / 2) * rate - marks[i].offsetWidth / 2 + 'px';
         }
         for (var i = marks1.length - 1; i > -1; i--) {
-            marks1[i].style.top = marks[i].style.top;
-            marks1[i].style.left = marks[i].style.left;
+            marks1[i].style.top = marks1[i].style.top;
+            marks1[i].style.left = marks1[i].style.left;
         }
         for (var i = marks2.length - 1; i > -1; i--) {
             marks2[i].style.top = parseFloat(marks[i].style.top, 10) - 0 + marks[i].offsetHeight + 'px';
