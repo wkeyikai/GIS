@@ -1,0 +1,22 @@
+{
+    "links": {
+        "home": "首頁",
+        "about": "關於",
+        "en": "EN",
+        "tw": "中文"
+    },
+    "menus": {
+        "about": "關於我們",
+        "product": "產品",
+        "support": "支援"
+    },
+    "home": {
+        "title": "歡迎",
+        "introduction": ""
+    },
+    "about": {
+        "title": "關於",
+        "introduction": ""
+    }
+}
+  
