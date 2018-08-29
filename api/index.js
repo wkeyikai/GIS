@@ -34,6 +34,33 @@ let accessControlAllow = (res)=>{
 
     res.setHeader('Access-Control-Allow-Credentials', true);
 }
+
+//GIS item
+router.get('/gisItem', (req, res) => {
+    accessControlAllow(res)
+    console.log('gisItem api call start') 
+    var base ={
+        name:'基礎理論',
+        lists:[{name:'瓦片地圖'},{name:'座標轉換'},{name:'DOM結構'},{name:'觸發事件'}]
+    } 
+    var fun = {
+        name:'地圖功能',
+        lists:[{name:'拖曳'},{name:'縮放'},{name:'定位'}]
+    }
+    var app ={
+        name:'應用功能',
+        lists:[{name:'貼點'},{name:'貼線'}]
+    }
+    res.json({list:[
+                {name:'GIS',
+                    lists:
+                    [
+                        base,fun,app
+                    ]}
+            ]})
+    console.log('gisItem api call end')
+  
+})
 //layout
 // Add POST - /api/layout
 router.post('/layout', (req, res) => {
@@ -55,17 +82,8 @@ router.post('/layout', (req, res) => {
 // Add POST - /api/menuList
 router.post('/menuList', (req, res) => {
     accessControlAllow(res)
-    console.log('menuList api call start')  
-    /*MongoClient.connect(url, function(err, client) {
-        console.log("Connected successfully to server")
-        const db = client.db(dbName)
-        findDocuments(db,'menu',(docs)=>{
-            console.log('docs',docs)
-            res.json({list:docs})
-            client.close();
-        })
-
-    })*/
+    console.log('menuList api call start')
+    res.json({})
     console.log('menuList api call end')
   
 })

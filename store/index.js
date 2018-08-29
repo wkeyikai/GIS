@@ -49,6 +49,10 @@ let config = {
         homeData:{
             type:'post',
             url:'/api/homeData'
+        },
+        gisItem:{
+            type:'get',
+            url:'/api/gisItem'
         }
     }
 }
