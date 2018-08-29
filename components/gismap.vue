@@ -24,12 +24,15 @@ export default {
         };
     },
     methods: {
-       line(line,color){
-           this.map.line({path: line, color: color})
-       },
-       mark(lon,lat,img,type){
-           this.map.mark(lon,lat,img,type)
-       }
+        line(line,color){
+            this.map.line({path: line, color: color})
+        },
+        mark(lon,lat,img,type){
+            this.map.mark(lon,lat,img,type)
+        },
+        setCenter(lon,lat){
+            this.map.setCenter(lon,lat);
+        }
     },
     components: {
         //custom: customComponents

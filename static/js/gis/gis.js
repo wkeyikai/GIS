@@ -1,5 +1,13 @@
 ﻿/*
 *
+*gis dom Structure:
+*'relative'                  'absolute'     'absolute'      'absolute'
+*div(mapID)--viewport(div)--tileContainer--draggable(div)--mapDiv(div)--map(img)
+*                                         --lineDiv(div)--line(canvas)
+*                                         --markDiv(div)--ivon(img)
+*                                         --winDiv(div)--div(html)
+*                         --crossDiv(div)--cross(html)               
+*                         --overviewDiv(div)--overview(html)
 */
 let GIS 
 (function(doc, win) {
@@ -1372,7 +1380,7 @@ GIS.map = function (mapID, draggable_options, tile_options) {
         tmpXY.y = mouse.y - isMap.offsetTop;
         //tmpXY.x =(center.X+mouse.x - isMap.offsetLeft*2)/2;
         //tmpXY.y =(center.Y+mouse.y - isMap.offsetTop*2)/2;
-        console.log('tmpXY',tmpXY)
+        //console.log('tmpXY',tmpXY)
         //        var oldRes = levelOfDetail
         //        var newRes = s == 'sub' ? levelOfDetail - 1 : levelOfDetail + 1;
         //        return { x: (oldRes * x/256 - newRes * center.X) / (oldRes - newRes),

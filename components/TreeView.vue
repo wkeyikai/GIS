@@ -198,7 +198,8 @@ export default {
 <style lang="scss"> 
 $font_normal: 14px;
 $border-color: #ddd;
-$second-color:#3496de;
+//$second-color:#3496de;
+$second-color:#ddd;
 $cus_focus:rgba(#c2e7ff, 0.3);
 $box-border: 1px solid $border-color;
 ol, ul {
@@ -357,7 +358,7 @@ ol, ul, li{
 
         padding: 5px;
 
-        color: #4D6878;
+        //color: #4D6878;
 
         -webkit-box-sizing: content-box;
 
@@ -407,11 +408,11 @@ ol, ul, li{
 
     }
 
-    .tree .tree-branch > .tree-branch-header > .tree-branch-name > .tree-label {
+    /*.hover.tree .tree-branch > .tree-branch-header > .tree-branch-name > .tree-label {
 
         margin-left: 2px;
 
-    }
+    }*/
 
     .tree .tree-branch:last-child:after {
 

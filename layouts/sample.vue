@@ -4,7 +4,7 @@
             <div class="in">
                 <el-row :gutter="10">
                     <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6">
-                        <treeview ref="treeGroup" :custom="true" :source="{lists:lists}" :open="false" :checkbox="false" v-on:selected="selected">
+                        <treeview ref="treeGroup" :custom="true" :source='{lists:gisItem.list}' :open="false" :checkbox="false" v-on:selected="selected">
                             <template slot="custom" slot-scope="props">
                                 <!--<span :class="props.source.status?'':'status-lock'">{{props.source.status_msg}}</span>
                                 <div class="edit-icons option-icon">
@@ -39,16 +39,9 @@ export default {
     layout(content){     
         return layout
     },
-    scrollToTop: true,
     data(){
         return {
-            lists:[{name:'GIS',lists:[{name:''}]}],
-            company:{info:''},
-            color1:'#F9F7C4',
-            color2:'#000000',
             lineData:[],
-            title:this.$t('home.title')+'followTeK',
-            className : {'0':'button--green','1':'button--grey'}
         }
     },
     head () {
@@ -64,10 +57,10 @@ export default {
     },
     methods:{
         ...mapActions([
-            'MENU_LIST'
+            'GIS_ITEM'
         ]),  
         init(){
-            this['MENU_LIST']()
+            this['GIS_ITEM']()
             this.showLine()
         },
         showLine(){
@@ -86,7 +79,7 @@ export default {
     },
     computed:{
         ...mapGetters([
-            'menuList'
+            'gisItem'
         ])  
     }
 }
