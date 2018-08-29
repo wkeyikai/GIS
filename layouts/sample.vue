@@ -15,7 +15,7 @@
                     </el-col>  
                     <el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18">
                         <gismap :center="[121.549535,24.979819]" :level="10" :cross="true" :overview="true" style="width:500px;height:500px;">
-                            <!--<gismark :lon="121.549535" :lat="24.979819"></gismark>-->
+                            <gismark :lon="121.549535" :lat="24.979819" :type="'poi'"></gismark>
                             <gisline :path="lineData" :color="'0000FF'" />
                         </gismap>
                     </el-col>

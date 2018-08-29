@@ -975,7 +975,7 @@ GIS.map = function (mapID, draggable_options, tile_options) {
         img.onmouseout = function () { dragStatus = 'global'; this.style.cursor = "pointer"; } //new
         markDiv.appendChild(img);
 
-        var format = { Lat: lat, Lon: lon, ImgObj: img };
+        var format = { lat: lat, lon: lon,src:imgSrc, type:type, ImgObj: img };
         markArray.push(format);
         //makeDraggable(img);
         //dragT(img);
@@ -1041,7 +1041,13 @@ GIS.map = function (mapID, draggable_options, tile_options) {
     };
 
     self.remark = function (rate) {
-        var marks = markDiv.getElementsByTagName('img'); //.childNodes;
+        markDiv.innerHTML = '';
+        for (var i = 0; i < lineArray.length; i++) {
+            var poi = markArray[i];
+            self.mark(poi.lon,poi.lat,poi.img,poi.type);
+        }
+        
+        /*var marks = markDiv.getElementsByTagName('img'); //.childNodes;
         var marks1 = markDiv.getElementsByTagName('div'); //.childNodes;
         var marks2 = labelDiv.getElementsByTagName('div'); //.childNodes;
         var win = winDiv.getElementsByClassName('win'); //.childNodes;
@@ -1062,7 +1068,7 @@ GIS.map = function (mapID, draggable_options, tile_options) {
             //console.log(win[i].offsetHeight);
             win[i].style.top = (parseFloat(win[i].style.top, 10) + win[i].offsetHeight) * rate - win[i].offsetHeight + 'px';
             win[i].style.left = (parseFloat(win[i].style.left, 10) + win[i].offsetWidth / 2) * rate - win[i].offsetWidth / 2 + 'px';
-        }
+        }*/
     }
 
     self.reWindow = function (rate) {
@@ -1568,7 +1574,7 @@ GIS.tool = {
         var imgName = GIS.path + 'img/mapImage/new/a';
         //var table = doc.createElement('table');
         var div = doc.createElement('div');
-        var max = 17,min =1; 
+        var max = 18,min =1; 
         //var ber_img = ['add', 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 'sub'];
         var ber = ['add'];
         var ber_text = ['+'];
