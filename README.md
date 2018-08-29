@@ -5,8 +5,11 @@ nuxt+vue
 (2)npm run dev
 
 GIS
-<gismap :center="[121.549535,24.979819]" 
+```html
+<gismap :center="[lon,lat]" 
         :level="10" 
         :cross="true" 
         :overview="true">
+        <gismark :lon="lon" :lat="lat" :type="'poi'"></gismark>
+        <gisline :path="lineData" :color="'0000FF'" />
 </gismap>
